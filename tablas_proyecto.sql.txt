@@ -1,0 +1,50 @@
+tablas_sistema.sql
+
+USE [SegundaJugada]
+GO
+
+/****** Object:  Table [dbo].[Inventario]    Script Date: 13/03/2026 18:12:46 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Inventario](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[prenda] [varchar](100) NOT NULL,
+	[precio] [decimal](10, 2) NOT NULL,
+	[estado] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+----------------------------------------------------------------------------------------------------------------------------------
+USE [SegundaJugada]
+GO
+
+/****** Object:  Table [dbo].[Ventas]    Script Date: 13/03/2026 18:12:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Ventas](
+	[id_venta] [int] IDENTITY(1,1) NOT NULL,
+	[fecha] [datetime] NULL,
+	[documento_cliente] [varchar](20) NULL,
+	[tipo_comprobante] [varchar](10) NULL,
+	[total_pagado] [decimal](10, 2) NULL,
+	[metodo_pago] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_venta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Ventas] ADD  DEFAULT (getdate()) FOR [fecha]
+GO
