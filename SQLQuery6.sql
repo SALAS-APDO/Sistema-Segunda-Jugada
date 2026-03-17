@@ -1,5 +1,5 @@
 -- ==========================================================
--- 1. PREPARACI√ìN DEL ENTORNO
+-- 1. PREPARACI”N DEL ENTORNO
 -- ==========================================================
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'SegundaJugada')
 BEGIN
@@ -11,7 +11,7 @@ USE SegundaJugada;
 GO
 
 -- ==========================================================
--- 2. CREACI√ìN DE TABLAS (Solo si no existen)
+-- 2. CREACI”N DE TABLAS (Solo si no existen)
 -- ==========================================================
 
 -- Tabla de Inventario
@@ -56,7 +56,7 @@ END
 GO
 
 -- ==========================================================
--- 3. REPORTE Y DOCUMENTACI√ìN (esto lo hice para mi compa√±eros)
+-- 3. REPORTE Y DOCUMENTACI”N (esto lo hice para mi compaÒeros)
 -- ==========================================================
 
 PRINT '--- ESTADO ACTUAL DE LA BASE DE DATOS ---';
@@ -70,17 +70,17 @@ SELECT 'CLIENTES REGISTRADOS' AS Reporte, * FROM Clientes;
 -- Ver Ventas Realizadas
 SELECT 'HISTORIAL DE VENTAS' AS Reporte, * FROM Ventas;
 -- ===============================================
--- REPORTE DIVIDIDO POR CATEGOR√çAS (PRODUCTOS)
+-- REPORTE DIVIDIDO POR CATEGORÕAS (PRODUCTOS)
 -- ===============================================
-PRINT '---------- SECCI√ìN: PANTALONES ----------';
+PRINT '---------- SECCI”N: PANTALONES ----------';
 SELECT sku, descripcion, talla, precio, stock 
 FROM Inventario WHERE categoria = 'Pantalones';
 
-PRINT '---------- SECCI√ìN: POLOS ----------';
+PRINT '---------- SECCI”N: POLOS ----------';
 SELECT sku, descripcion, talla, precio, stock 
 FROM Inventario WHERE categoria = 'Polos';
 
-PRINT '---------- SECCI√ìN: ACCESORIOS ----------';
+PRINT '---------- SECCI”N: ACCESORIOS ----------';
 SELECT sku, descripcion, talla, precio, stock 
 FROM Inventario WHERE categoria NOT IN ('Pantalones', 'Polos');
 
@@ -90,5 +90,5 @@ FROM Inventario WHERE categoria NOT IN ('Pantalones', 'Polos');
 PRINT '---------- CLIENTES REGISTRADOS ----------';
 SELECT dni, nombre, apellido, celular, correo FROM Clientes;
 
-PRINT '---------- √öLTIMAS VENTAS REALIZADAS ----------';
+PRINT '---------- ⁄LTIMAS VENTAS REALIZADAS ----------';
 SELECT id_venta, documento_cliente, total_pagado, fecha_venta FROM Ventas;
